@@ -7,5 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Stayman Hou",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "grunt-cli": "^1.2.0",
+    "http-server": "^0.9.0"
+  }
 }
