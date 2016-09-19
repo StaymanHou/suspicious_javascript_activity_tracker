@@ -74,9 +74,6 @@ setTimeout(function(){
   };
 
   monitor_methods(window, 'window', ['alert', 'confirm', 'prompt', 'open']);
-  monitor_methods(window.history, 'window.history', ['pushState', 'replaceState']);
   monitor_properties(window.location, 'window.location', ['href', 'pathname', 'search']); // this works for window.location=/window.location.href=/document.location=/document.location.href=
-
-  // test
 })();
 },0);
