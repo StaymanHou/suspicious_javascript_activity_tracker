@@ -3,7 +3,6 @@
 * beforeunload event (how shall we implement this?)
 
 ## Legit Open Domains
-* christianpost.com
 * doubleclick.net
 * aol.com
 * eb2.3lift.com
