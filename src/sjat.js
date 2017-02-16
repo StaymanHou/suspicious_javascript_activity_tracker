@@ -32,7 +32,8 @@ setTimeout(function(){
         var methodName = methodNames[i];
         var oldMethod = obj[methodName];
         obj[methodName] = function() {
-          firePixelMethodCalled(objName, methodName, arguments);
+          var err = new Error();
+          firePixelMethodCalled(objName, methodName, [arguments, err.stack]);
           return oldMethod.apply(this, arguments);
         };
       })();
@@ -42,7 +43,6 @@ setTimeout(function(){
   // object.watch
   if (!Object.prototype.watch) {
     Object.defineProperty(Object.prototype, "watch", { enumerable: false, configurable: true, writable: false, value: function (prop, handler) {
-      console.log('test');
         var oldval = this[prop], newval = oldval, getter = function () {
           return newval;
         }, setter = function (val) {
@@ -67,7 +67,9 @@ setTimeout(function(){
       var propName = propNames[i];
       obj.watch(propName, function(_propName, _oldVal, newVal){
         console.log(arguments);
-        firePixelPropertySet(objName, _propName, newVal);
+        if (newVal === window.location.href) { return newVal; }
+        var err = new Error(); console.log(err.stack);
+        firePixelPropertySet(objName, _propName, [newVal, err.stack]);
         return newVal;
       });
     }
